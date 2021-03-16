@@ -25,11 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Docker login
+        run: docker login registry.cn-beijing.aliyuncs.com/qlijin/lijinrepo -u qlijin0888 -p ${{ secrets.DOCKER_HUB_PWD }}
       
       - name: Run a multi-line script
+        env:
+          n183_private_key: ${{ secrets.n183 }}
+          aliyun_password: ${{ secrets.ALIYUN_PASSWORD }}
         run: |
           docker pull k8s.gcr.io/kube-apiserver:v1.18.16
-          docker tag k8s.gcr.io/kube-apiserver:v1.18.16 docker.io/qlijin/kube-apiserver:v1.18.16
+          docker tag k8s.gcr.io/kube-apiserver:v1.18.16 registry.cn-beijing.aliyuncs.com/qlijin/lijinrepo/kube-apiserver:v1.18.16
+          docker push registry.cn-beijing.aliyuncs.com/qlijin/lijinrepo/kube-apiserver:v1.18.16
