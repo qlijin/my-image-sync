@@ -9,7 +9,7 @@ file="images_list.txt"
 if [ -f "$file" ]
 then
   echo "$file found."
-  new_registry="registry.cn-beijing.aliyuncs.com/qlijin"
+  new_registry="registry.cn-beijing.aliyuncs.com/qlijin/lijinrepo"
 
   while IFS='/' read -r key value
   do
