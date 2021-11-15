@@ -17,8 +17,9 @@ then
     image=${key}/${value}
     docker pull ${image}
 
-    new_image=${new_registry}/${image}
-    # new_image=${new_registry}/${value}
+    new_name=${key}-${value}
+    new_image=${new_registry}/${new_name}
+
     echo "===================="
     echo ${new_image}
 
