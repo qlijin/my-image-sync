@@ -19,6 +19,8 @@ then
 
     new_image=${new_registry}/${image}
     # new_image=${new_registry}/${value}
+    echo "===================="
+    echo ${new_image}
 
     docker tag ${image} ${new_image}
     docker push ${new_image}
